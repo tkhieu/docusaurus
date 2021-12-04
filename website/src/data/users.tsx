@@ -736,7 +736,7 @@ const Users: User[] = [
   {
     title: 'Lux Algo',
     description: 'Creation of technical trading tools',
-    preview: require('./showcase/lux-algo.png'),
+    preview: require('./showcase/lux-algo.webp'),
     website: 'https://docs.luxalgo.com',
     source: 'https://github.com/smack0202/luxdocs',
     tags: ['opensource', 'design', 'i18n', 'product'],

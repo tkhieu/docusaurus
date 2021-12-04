@@ -1,0 +1,30 @@
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+import path from 'path';
+import * as lqip from '../lqip';
+
+describe('lqip library', () => {
+  const imgPath = path.join(__dirname, '__fixtures__', 'endi.jpg');
+  const invalidPath = path.join(__dirname, '__fixtures__', 'docusaurus.svg');
+
+  it('should reject unknown or unsupported file format', async () => {
+    await expect(lqip.base64(invalidPath)).rejects.toThrow(
+      /Error: Input file is missing or uses unsupported image format, lqip v.*/,
+    );
+  });
+
+  it('should generate a valid base64', async () => {
+    await expect(lqip.base64(imgPath)).resolves.toMatchInlineSnapshot();
+  });
+
+  it('should generate a valid color palette', async () => {
+    const imgPalette = await lqip.palette(imgPath);
+    expect(imgPalette).toHaveLength(6);
+    expect(imgPalette).toContain('#578ca1');
+  });
+});

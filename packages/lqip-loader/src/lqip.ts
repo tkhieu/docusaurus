@@ -19,6 +19,8 @@ const SUPPORTED_MIMES: Record<string, string> = {
   jpeg: 'image/jpeg',
   jpg: 'image/jpeg',
   png: 'image/png',
+  webp: 'image/webp',
+  avif: 'image/avif',
 };
 
 async function base64(file: string): Promise<string> {
